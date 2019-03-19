@@ -4,13 +4,14 @@ const fsp = require("fs").promises;
 const fs = require("fs");
 
 //file we're getting birthtime of
-const inputFile = "C:/Users/ITDBEALH/Desktop/Outlook Web Access.url";
+//put your own file here
+const inputFile = "";
 
 // Connection URL
 const url = "mongodb://localhost:27017";
 
 // Database Name
-const dbName = "owaTracking";
+const dbName = "myDb";
 
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
@@ -36,7 +37,7 @@ MongoClient.connect(url, function(err, client) {
 // Insert file birthtime into collection
 const insertDocuments = function(db, callback) {
   // Get the documents collection
-  const collection = db.collection("owaBtimes");
+  const collection = db.collection("myDb");
   // insert birthtime gotten with node fs promise
   fsp.lstat(inputFile).then(
     function(response) {
